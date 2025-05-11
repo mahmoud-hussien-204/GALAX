@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .rounded-inherit {
+    border-radius: inherit;
+  }
+
+  .text-shadow-custom {
+    text-shadow:
+      2px 2px 1px #202020,
+      4px 4px 2px #dbae59;
+  }
+}
