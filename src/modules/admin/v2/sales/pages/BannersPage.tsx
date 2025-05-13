@@ -10,11 +10,11 @@ import useQuery from "@/hooks/useQuery";
 
 import {apiGetBanners} from "../services";
 
-import CreateBannerForm from "../components/CreateBannerForm";
+import CreateBannerForm from "../components/banners/CreateBannerForm";
 
-import Head from "../components/Head";
+import Head from "../components/banners/Head";
 
-import EditBannerForm from "../components/EditBannerForm";
+import EditBannerForm from "../components/banners/EditBannerForm";
 
 import Status from "@/components/Status";
 
@@ -42,7 +42,8 @@ import dayjs from "dayjs";
 
 import DataNotFound from "@/components/DataNotFound";
 
-import ViewBannerForm from "../components/ViewBannerForm";
+import ViewBannerForm from "../components/banners/ViewBannerForm";
+import DeleteForm from "../components/banners/DeleteForm";
 
 export const Component = () => {
   usePageTitle("Banners");
@@ -120,7 +121,12 @@ export const Component = () => {
           </Box>
         </div>
       </TransitionPage>
-      <Modal add={CreateBannerForm} edit={EditBannerForm} view={ViewBannerForm} />
+      <Modal
+        add={CreateBannerForm}
+        edit={EditBannerForm}
+        view={ViewBannerForm}
+        delete={DeleteForm}
+      />
     </ModalProvider>
   );
 };

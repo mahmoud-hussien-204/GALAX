@@ -10,7 +10,7 @@ import {EnumModals} from "@/enums";
 
 import useModal from "@/hooks/useModal";
 
-import {constantBannerStatus} from "../constants";
+import {constantBannerStatus} from "../../constants";
 
 const Head = () => {
   const {show} = useModal();

@@ -4,17 +4,17 @@ import {yupResolver} from "@hookform/resolvers/yup";
 
 import {useForm} from "react-hook-form";
 
-import {ICreateBannerForm} from "../interfaces";
+import {ICreateBannerForm} from "../../interfaces";
 
 import * as Yup from "yup";
 
 import useMutation from "@/hooks/useMutation";
 
-import {apiCreateBanner} from "../services";
+import {apiCreateBanner} from "../../services";
 
 import {useQueryClient} from "@tanstack/react-query";
 
-import {EnumBannerStatus} from "../enums";
+import {EnumBannerStatus} from "../../enums";
 
 export const schema: Yup.ObjectSchema<ICreateBannerForm> = Yup.object().shape({
   title: Yup.string().required("Title is required"),

@@ -25,3 +25,9 @@ export const apiEditBanner = (data: Partial<IEditBannerForm>) => {
     body: formData,
   });
 };
+
+export const apiDeleteBanner = (id: string) => {
+  return InterceptorHelper.intercept(`/banner/${id}`, {
+    method: "DELETE",
+  });
+};

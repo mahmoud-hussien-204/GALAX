@@ -2,7 +2,7 @@ import ModalHeader from "@/components/ModalHeader";
 
 import ModalFooter from "@/components/ModalFooter";
 
-import useCreateBannerForm from "../hooks/useCreateBannerForm";
+import useCreateBannerForm from "../../hooks/banners/useCreateBannerForm";
 
 import CreateAndEditBannerForm from "./CreateAndEditBannerForm";
 

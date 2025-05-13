@@ -8,11 +8,11 @@ import ModalBody from "@/components/ModalBody";
 
 import {UseFormReturn} from "react-hook-form";
 
-import {ICreateBannerForm} from "../interfaces";
+import {ICreateBannerForm} from "../../interfaces";
 
 import Select from "@/components/Select";
 
-import {constantBannerStatus} from "../constants";
+import {constantBannerStatus} from "../../constants";
 
 import FileUploader from "@/components/FileUploader";
 

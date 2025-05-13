@@ -2,7 +2,8 @@ import ModalBody from "@/components/ModalBody";
 
 import ModalHeader from "@/components/ModalHeader";
 
-import {IBanner} from "../interfaces";
+import {IBanner} from "../../interfaces";
+
 import Status from "@/components/Status";
 
 const ViewBannerForm = ({data: propsData}: IModalComponentProps) => {
