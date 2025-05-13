@@ -4,11 +4,11 @@ import {yupResolver} from "@hookform/resolvers/yup";
 
 import {useForm} from "react-hook-form";
 
-import {IBanner, IEditBannerForm} from "../interfaces";
+import {IBanner, IEditBannerForm} from "../../interfaces";
 
 import useMutation from "@/hooks/useMutation";
 
-import {apiEditBanner} from "../services";
+import {apiEditBanner} from "../../services";
 
 import {useQueryClient} from "@tanstack/react-query";
 
