@@ -79,4 +79,8 @@ export enum EnumAppStatuses {
   banned = "banned",
   completed = "completed",
   approved = "approved",
+  SHOW = "show",
+  HIDE = "hide",
+  REVIEW = "review",
+  EXPIRED = "expired",
 }

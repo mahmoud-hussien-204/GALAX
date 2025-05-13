@@ -1,5 +1,7 @@
-import {useMemo} from "react";
+import {useState, useEffect} from "react";
+
 import {useFormContext} from "react-hook-form";
+
 import IconImage from "./icons/IconImage";
 
 interface IProps {
@@ -8,43 +10,54 @@ interface IProps {
   title: string;
 }
 
-const FileUploader = ({locale = false, name, title}: IProps) => {
+const FileUploader = ({locale = true, name, title}: IProps) => {
   const {setValue, watch} = useFormContext();
+
+  const [imageUrl, setImageUrl] = useState<string | null>(null);
+
+  const fieldValue = watch(name);
+
+  // Manage image URL creation and cleanup
+  useEffect(() => {
+    if (typeof fieldValue === "object" && fieldValue !== null) {
+      const url = window.URL.createObjectURL(fieldValue);
+      setImageUrl(url);
+      return () => {
+        window.URL.revokeObjectURL(url);
+      };
+    } else {
+      setImageUrl(fieldValue);
+    }
+  }, [fieldValue]);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
-    // if locale that means the data will sent as form data
     if (locale) {
-      setValue(name, file);
+      setValue(name, file, {shouldValidate: true, shouldDirty: true, shouldTouch: true});
     } else {
-      // if not locale that means the file will upload to server and returned url
+      // TODO: Upload the file to the server and set the returned URL in the form
     }
   };
-
-  const fieldValue = watch(name);
-
-  const imageFieldValue = useMemo(() => {
-    if (!fieldValue) return null;
-    else if (typeof fieldValue === "object") return window.URL.createObjectURL(fieldValue);
-    return fieldValue;
-  }, [fieldValue]);
 
   return (
     <div className='w-full'>
       <input type='file' hidden id='file-uploader' onChange={handleFileChange} />
-      <label htmlFor='file-uploader' className='flex cursor-pointer items-center gap-0.75rem'>
-        <div className='flex h-4.5rem w-4.5rem items-center justify-center rounded-box bg-base-300'>
-          {!imageFieldValue ? (
+      <label
+        htmlFor='file-uploader'
+        className='block h-[200px] w-full cursor-pointer rounded-0.5rem bg-base-300'
+      >
+        {!imageUrl ? (
+          <div className='flex h-full w-full flex-col items-center justify-center gap-1rem text-center'>
             <IconImage />
-          ) : (
-            <img src={imageFieldValue} className='rounded-inherit h-full w-full object-cover' />
-          )}
-        </div>
-        <div>
-          <h5 className='mb-0.25rem capitalize'>{title}</h5>
-          <h6 className='text-14 text-neutral-400'>Upload</h6>
-        </div>
+            <div>
+              <h5 className='mb-0.25rem capitalize'>{title}</h5>
+              <h6 className='text-14 text-neutral-600'>Upload</h6>
+            </div>
+          </div>
+        ) : (
+          <img src={imageUrl} className='rounded-inherit h-full w-full object-cover' />
+        )}
       </label>
     </div>
   );

@@ -11,10 +11,10 @@ const Status = ({status, bordered = true}: IProps) => {
   return (
     <span
       className={AppHelper.classes(
-        "inline-flex h-2rem items-center justify-center gap-0.75rem rounded-full text-12 font-medium capitalize",
+        "inline-flex h-1.75rem items-center justify-center gap-0.75rem rounded-full text-12 font-medium capitalize",
         constantStatusColors[status.toLowerCase() as keyof typeof constantStatusColors],
         {
-          "min-w-[7.5rem] border px-1.2rem": bordered,
+          "border px-1rem": bordered,
         }
       )}
     >

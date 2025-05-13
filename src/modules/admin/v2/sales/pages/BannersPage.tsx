@@ -4,74 +4,123 @@ import usePageTitle from "@/hooks/usePageTitle";
 
 import ModalProvider from "@/providers/ModalProvider";
 
-import Head from "../components/Head";
-
-import UsersList from "../components/UsersList";
-
 import Modal from "@/components/Modal";
-
-import DeleteForm from "../components/DeleteForm";
-
-import ViewUserForm from "../components/ViewUserForm";
-
-import EditUserForm from "../components/EditUserForm";
-
-import AddUserForm from "../components/AddUserForm";
-
-import SuspendForm from "../components/SuspendForm";
 
 import useQuery from "@/hooks/useQuery";
 
-import {apiGetUsers} from "../services";
+import {apiGetBanners} from "../services";
 
-import useApiUrlFilter from "@/hooks/useApiUrlFilter";
+import CreateBannerForm from "../components/CreateBannerForm";
 
-import {ENUM_USERS_STATUS} from "../enums";
+import Head from "../components/Head";
 
-import PhoneVerifyForm from "../components/PhoneVerifyForm";
+import EditBannerForm from "../components/EditBannerForm";
 
-import EmailVerifyForm from "../components/EmailVerifyForm";
+import Status from "@/components/Status";
 
-import ActiveUserForm from "../components/ActiveUserForm";
+import {
+  TableBoxedLayoutActionButtonDelete,
+  TableBoxedLayoutActionButtonEdit,
+  TableBoxedLayoutActionButtonView,
+  TableBoxedLayoutActions,
+  TableBoxedLayoutContainer,
+  TableBoxedLayoutSkeleton,
+  TableBoxedLayoutTBody,
+  TableBoxedLayoutTD,
+  TableBoxedLayoutTH,
+  TableBoxedLayoutTHead,
+  TableBoxedLayoutTR,
+} from "@/components/TableBoxedLayout";
+
+import Box from "@/components/Box";
+
+import PageLimit from "@/components/PageLimit";
+
+import Pagination from "@/components/Pagination";
+
+import dayjs from "dayjs";
+
+import DataNotFound from "@/components/DataNotFound";
+
+import ViewBannerForm from "../components/ViewBannerForm";
 
 export const Component = () => {
   usePageTitle("Banners");
 
-  const {
-    filterSearchParams,
-    pageSearchParams: page,
-    limitSearchParams: limit,
-    searchSearchParams: search,
-  } = useApiUrlFilter();
-
-  const type = filterSearchParams as ENUM_USERS_STATUS;
-
   const {data, isLoading} = useQuery({
-    queryFn: () => apiGetUsers(type, page, limit, search),
-    queryKey: ["admin-get-users", type, page, limit, search],
+    queryFn: () => apiGetBanners(),
+    queryKey: ["admin-get-banners"],
   });
 
-  const totalPages = data?.recordsTotal ? Math.ceil(data.recordsTotal / limit) : 1;
+  const bannersList = data?.data || [];
+
+  const totalPages = 1;
 
   return (
     <ModalProvider>
       <TransitionPage>
         <Head />
         <div className='mt-2rem'>
-          <UsersList users={data?.data || []} totalPages={totalPages} isLoading={isLoading} />
+          <Box>
+            <TableBoxedLayoutContainer>
+              <TableBoxedLayoutTHead>
+                <TableBoxedLayoutTR>
+                  <TableBoxedLayoutTH>ID</TableBoxedLayoutTH>
+                  <TableBoxedLayoutTH>Title</TableBoxedLayoutTH>
+                  <TableBoxedLayoutTH>Link</TableBoxedLayoutTH>
+                  <TableBoxedLayoutTH>Status</TableBoxedLayoutTH>
+                  <TableBoxedLayoutTH>Created at</TableBoxedLayoutTH>
+                  <TableBoxedLayoutTH>Actions</TableBoxedLayoutTH>
+                </TableBoxedLayoutTR>
+              </TableBoxedLayoutTHead>
+
+              <TableBoxedLayoutTBody>
+                {isLoading ? (
+                  Array.from({length: 3}).map((_, index) => (
+                    <TableBoxedLayoutTR key={index}>
+                      <TableBoxedLayoutSkeleton />
+                      <TableBoxedLayoutSkeleton />
+                      <TableBoxedLayoutSkeleton />
+                      <TableBoxedLayoutSkeleton />
+                      <TableBoxedLayoutSkeleton />
+                      <TableBoxedLayoutSkeleton />
+                    </TableBoxedLayoutTR>
+                  ))
+                ) : bannersList.length > 0 ? (
+                  bannersList.map((item) => (
+                    <TableBoxedLayoutTR key={item.id}>
+                      <TableBoxedLayoutTD>{item.id}</TableBoxedLayoutTD>
+                      <TableBoxedLayoutTD>{item.title}</TableBoxedLayoutTD>
+                      <TableBoxedLayoutTD>{item.link}</TableBoxedLayoutTD>
+                      <TableBoxedLayoutTD>
+                        <Status status={item.status} />
+                      </TableBoxedLayoutTD>
+                      <TableBoxedLayoutTD>
+                        {dayjs(item.created_at).format("MMMM D, YYYY h:mm A")}
+                      </TableBoxedLayoutTD>
+                      <TableBoxedLayoutTD>
+                        <TableBoxedLayoutActions>
+                          <TableBoxedLayoutActionButtonView data={item} />
+                          <TableBoxedLayoutActionButtonEdit data={item} />
+                          <TableBoxedLayoutActionButtonDelete data={item} />
+                        </TableBoxedLayoutActions>
+                      </TableBoxedLayoutTD>
+                    </TableBoxedLayoutTR>
+                  ))
+                ) : (
+                  <DataNotFound colSpan={6} />
+                )}
+              </TableBoxedLayoutTBody>
+            </TableBoxedLayoutContainer>
+
+            <div className='mt-2rem flex items-center justify-between'>
+              <PageLimit />
+              <Pagination totalPages={totalPages} />
+            </div>
+          </Box>
         </div>
       </TransitionPage>
-
-      <Modal
-        view={ViewUserForm}
-        edit={EditUserForm}
-        add={AddUserForm}
-        suspended={SuspendForm}
-        delete={DeleteForm}
-        phoneVerify={PhoneVerifyForm}
-        emailVerify={EmailVerifyForm}
-        active={ActiveUserForm}
-      />
+      <Modal add={CreateBannerForm} edit={EditBannerForm} view={ViewBannerForm} />
     </ModalProvider>
   );
 };

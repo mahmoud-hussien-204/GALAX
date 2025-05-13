@@ -1,31 +1,37 @@
-import {ENUM_USERS_STATUS} from "../enums";
+import {EnumBannerStatus} from "../enums";
 
-export const constantUsersStatus = [
+export const constantBannerStatus = [
   {
-    label: "Users Status",
+    label: "Select Banner Status",
     value: "",
     disabled: true,
   },
   {
-    label: "Active Users",
-    value: ENUM_USERS_STATUS.ACTIVE_USERS,
+    label: EnumBannerStatus.SHOW,
+    value: EnumBannerStatus.SHOW,
   },
   {
-    label: "Suspended Users",
-    value: ENUM_USERS_STATUS.SUSPEND_USER,
+    label: EnumBannerStatus.HIDE,
+    value: EnumBannerStatus.HIDE,
   },
   {
-    label: "Deleted Users",
-    value: ENUM_USERS_STATUS.DELETED_USER,
+    label: EnumBannerStatus.PENDING,
+    value: EnumBannerStatus.PENDING,
   },
   {
-    label: "Email Pending",
-    value: ENUM_USERS_STATUS.EMAIL_PENDING,
+    label: EnumBannerStatus.REVIEW,
+    value: EnumBannerStatus.REVIEW,
   },
   {
-    label: "Phone Pending",
-    value: ENUM_USERS_STATUS.PHONE_PENDING,
+    label: EnumBannerStatus.APPROVED,
+    value: EnumBannerStatus.APPROVED,
+  },
+  {
+    label: EnumBannerStatus.REJECTED,
+    value: EnumBannerStatus.REJECTED,
+  },
+  {
+    label: EnumBannerStatus.EXPIRED,
+    value: EnumBannerStatus.EXPIRED,
   },
 ];
-
-export const userActions = ["Email_verify", "Phone_verify", "Delete", "Edit", "Suspend", "View"];

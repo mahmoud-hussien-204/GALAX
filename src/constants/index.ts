@@ -6,17 +6,13 @@ export const constantStatusColors = {
   [EnumAppStatuses.approved]: "border-success/20 text-success",
   [EnumAppStatuses.inactive]: "border-error/20 text-error",
   [EnumAppStatuses.deactive]: "border-error/20 text-error",
-  // [EnumBuyCoinStatus.pending]: "border-warning/20 text-warning",
   [EnumAppStatuses.completed]: "border-success/20 text-success",
-  // [EnumBuyCoinStatus.active]: "border-success/20 text-success",
   [EnumAppStatuses.failed]: "border-error/20 text-error",
   [EnumAppStatuses.banned]: "border-error/20 text-error",
-  // [EnumBuyCoinStatus.inactive]: "border-error/20 text-error",
-
-  // [EnumCoinHistoryStatus.pending]: "border-warning/20 text-warning",
   [EnumAppStatuses.accepted]: "border-success/20 text-success",
   [EnumAppStatuses.rejected]: "border-error/20 text-error",
-  // [EnumCoinHistoryStatus.failed]: "border-error/20 text-error",
+  [EnumAppStatuses.REVIEW]: "border-error/20 text-error",
+  [EnumAppStatuses.EXPIRED]: "border-warning/20 text-warning",
 };
 
 export const constantLanguage = [

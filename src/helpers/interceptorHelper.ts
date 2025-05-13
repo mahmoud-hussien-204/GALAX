@@ -66,7 +66,7 @@ export default class InterceptorHelper {
   // intercept function
   static async intercept<T>(
     url: string,
-    options: RequestInit = {},
+    options: RequestInit = {method: "GET"},
     showAlert: boolean = true,
     useBaseURL: boolean = true
   ): Promise<T> {

@@ -2,14 +2,14 @@ import useApiUrlFilter from "@/hooks/useApiUrlFilter";
 
 import Select from "./Select";
 
-import { useCallback } from "react";
+import {useCallback} from "react";
 
 interface IProps {
-  options: { label: string; value: string }[];
+  options: {label: string; value: string}[];
 }
 
-const PageFilterSelect = ({ options }: IProps) => {
-  const { filterSearchParams, setSearchParams, searchParams } = useApiUrlFilter();
+const PageFilterSelect = ({options}: IProps) => {
+  const {filterSearchParams, setSearchParams, searchParams} = useApiUrlFilter();
 
   const onChangeSelect = useCallback(
     (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -27,7 +27,7 @@ const PageFilterSelect = ({ options }: IProps) => {
       id='page-filter-select'
       onChange={(e) => onChangeSelect(e)}
       defaultValue={filterSearchParams}
-      className={`max-w-[200px] ${filterSearchParams ? "text-white" : "!text-neutral-500"}`}
+      className={`max-w-max ${filterSearchParams ? "text-neutral" : "!text-neutral-500"}`}
     />
   );
 };

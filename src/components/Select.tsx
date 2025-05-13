@@ -22,7 +22,7 @@ const Select = forwardRef(
         ref={ref}
         {...props}
         className={AppHelper.classes(
-          "select select-bordered min-h-0 w-full border-base-200 bg-base-300 text-neutral focus:border-primary focus:outline-0",
+          "select select-bordered min-h-0 w-full border-base-200 bg-base-300 capitalize text-neutral focus:border-primary focus:outline-0",
           {
             "!border-error": isError,
           },
@@ -30,7 +30,11 @@ const Select = forwardRef(
         )}
       >
         {options.map((option) => (
-          <option key={option.value} className='text-neutral disabled:text-neutral-500' {...option}>
+          <option
+            key={option.value}
+            className='capitalize text-neutral disabled:text-neutral-500'
+            {...option}
+          >
             {option.label}
           </option>
         ))}
