@@ -39,7 +39,7 @@ const useEmailVerifyForm = () => {
   const handleSubmit = form.handleSubmit((values: IEmailVerifyForm) => {
     mutate(values, {
       onSuccess: () => {
-        navigate("/auth/login");
+        navigate("/auth/create-new-password");
       },
     });
   });

@@ -18,7 +18,7 @@ const ProfileMenu = () => {
       button={
         <div className='flex items-center gap-0.5rem rounded-full bg-base-300 p-0.5rem sm:pe-1rem'>
           <img
-            src={userData?.avatar}
+            src={userData?.avatar || "/default-avatar.png"}
             alt='avatar'
             className='h-2rem w-2rem flex-1 rounded-full object-cover'
           />

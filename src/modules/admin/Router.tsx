@@ -20,10 +20,17 @@ import settingsRoutes from "./settings/Router";
 
 import profileRoutes from "./profile/Router";
 
+// new routes
+import salesRoutes from "./v2/sales/Router";
+
 export default [
   {
     path: "/admin",
     children: [
+      // **** new routes ****
+      ...salesRoutes,
+
+      // **** old routes from old project ****
       ...dashboardRoutes,
       ...usersRoutes,
       ...coinsRoutes,

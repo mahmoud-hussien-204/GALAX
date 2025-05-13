@@ -37,7 +37,7 @@ const useResetPasswordForm = () => {
     mutate(values, {
       onSuccess: () => {
         saveUserEmail(values.email);
-        navigate("/auth/confirm-email");
+        navigate("/auth/email-verify");
       },
     });
   });
