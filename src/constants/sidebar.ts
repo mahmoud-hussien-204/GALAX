@@ -117,6 +117,12 @@ export const constantSidebar: ISidebarItem = {
       end: true,
       isSubmenu: false,
     },
+    {
+      title: "Settings",
+      path: "/admin/settings/general",
+      icon: "cog",
+      isSubmenu: false,
+    },
   ],
   [EnumUserRole.user]: [],
 };

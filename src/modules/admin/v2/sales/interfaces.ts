@@ -13,7 +13,7 @@ export interface ICreateBannerForm {
   title: string;
   link: string;
   status: EnumBannerStatus;
-  image: File;
+  image: File | string;
 }
 
 export type IEditBannerForm = ICreateBannerForm & {id: string};

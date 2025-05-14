@@ -20,7 +20,7 @@ const ViewBannerForm = ({data: propsData}: IModalComponentProps) => {
         </div>
         <a href={data?.link} target='_blank' rel='noopener noreferrer'>
           <img
-            src='{data?.image}'
+            src={data?.image}
             alt='Banner'
             className='h-[200px] w-full rounded-0.5rem bg-base-300'
           />

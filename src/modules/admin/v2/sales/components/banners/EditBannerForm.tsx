@@ -11,12 +11,14 @@ import {FormProvider} from "react-hook-form";
 const EditBannerForm = () => {
   const {form, handleSubmit, isPending} = useEditBannerForm();
 
+  const {isDirty} = form.formState;
+
   return (
     <FormProvider {...form}>
       <form noValidate name='edit-banner-form' id='edit-banner-form' onSubmit={handleSubmit}>
         <ModalHeader title='Edit Banner' />
         <CreateAndEditBannerForm form={form} type='edit' />
-        <ModalFooter isLoading={isPending} title='Update Banner' />
+        <ModalFooter isLoading={isPending} disabled={!isDirty} title='Update Banner' />
       </form>
     </FormProvider>
   );

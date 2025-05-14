@@ -21,7 +21,7 @@ export const apiEditBanner = (data: Partial<IEditBannerForm>) => {
   const formData = AppHelper.toFormData(rest);
 
   return InterceptorHelper.intercept(`/banner/${id}`, {
-    method: "POST",
+    method: "PUT",
     body: formData,
   });
 };
