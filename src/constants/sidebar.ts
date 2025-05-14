@@ -119,7 +119,7 @@ export const constantSidebar: ISidebarItem = {
     },
     {
       title: "Settings",
-      path: "/admin/settings",
+      path: "/admin/settings/general",
       icon: "cog",
       isSubmenu: false,
     },
