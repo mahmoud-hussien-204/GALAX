@@ -4,6 +4,7 @@ import Button from "./Button";
 
 interface IPropsBase {
   isLoading?: boolean;
+  disabled?: boolean;
   title?: string;
   children?: React.ReactNode;
 }
@@ -11,6 +12,7 @@ interface IPropsBase {
 interface IPropsWithChildren extends IPropsBase {
   children: React.ReactNode;
   isLoading?: boolean;
+  disabled?: boolean;
   title?: string;
 }
 
@@ -18,6 +20,7 @@ interface IPropsWithChildren extends IPropsBase {
 interface IPropsWithoutChildren extends IPropsBase {
   children?: undefined;
   isLoading: boolean;
+  disabled?: boolean;
   title: string;
 }
 
@@ -40,7 +43,12 @@ const ModalFooter = (props: Props) => {
           >
             Cancel
           </Button>
-          <Button type='submit' className='min-w-[100px] flex-1' isLoading={props.isLoading}>
+          <Button
+            type='submit'
+            className='min-w-[100px] flex-1'
+            disabled={props.disabled}
+            isLoading={props.isLoading}
+          >
             {props.title}
           </Button>
         </>

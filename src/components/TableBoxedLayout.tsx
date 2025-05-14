@@ -2,19 +2,7 @@ import AppHelper from "@/helpers/appHelper";
 
 import useModal from "@/hooks/useModal";
 
-import Dropdown, {DropdownMenu} from "./Dropdown";
-
-import Dots from "./Dots";
-
 import {EnumModals} from "@/enums";
-
-import IconSell from "./icons/IconSell";
-
-import IconBuy from "./icons/IconBuy";
-
-import IconSendReceive from "./icons/IconSendReceive";
-
-import IconPrimary from "./icons/IconPrimary";
 
 import IconEdit from "./icons/IconEdit";
 
@@ -22,15 +10,9 @@ import IconEye from "./icons/IconEye";
 
 import IconTrash from "./icons/IconTrash";
 
-import IconLock from "./icons/IconLock";
-
-import IconClose from "./icons/IconClose";
-
-import IconCheck from "./icons/IconCheck";
-
 import {Link} from "react-router-dom";
 
-const confirmationModalWidth = "max-w-[30rem]";
+const confirmationModalWidth = "!max-w-[30rem]";
 
 interface IProps {
   children: React.ReactNode;
@@ -105,11 +87,7 @@ export const TableBoxedLayoutFlexContent = ({children}: IProps) => {
 };
 
 export const TableBoxedLayoutActions = ({children}: IProps) => {
-  return (
-    <Dropdown button={<Dots />}>
-      <DropdownMenu className='flex min-w-[11rem] flex-col gap-0.5rem'>{children}</DropdownMenu>
-    </Dropdown>
-  );
+  return <div className='flex items-center gap-0.75rem'>{children}</div>;
 };
 
 interface ITableBoxedLayoutActionButtonProps {
@@ -128,11 +106,10 @@ export const TableBoxedLayoutActionButton = ({
 
   return (
     <div
-      className='flex cursor-pointer items-center gap-0.75rem rounded-btn py-0.5rem text-12 transition-all hover:bg-primary hover:ps-0.75rem hover:text-primary-content'
+      className='flex cursor-pointer items-center gap-0.5rem text-12 hover:text-primary'
       onClick={() => {
         show(modal ?? "accept", data);
-
-        if (typeof data === "object" && Object.prototype.hasOwnProperty.call(data, "className")) {
+        if (data && typeof data === "object" && Reflect.has(data, "className")) {
           setClassName((data as {className: string}).className);
         }
       }}
@@ -147,77 +124,6 @@ interface IButtonProps {
   data?: unknown;
 }
 
-export const TableBoxedLayoutActionButtonWithdraw = ({data}: IButtonProps) => {
-  return (
-    <TableBoxedLayoutActionButton
-      modal={EnumModals.withdraw}
-      title='Withdraw'
-      icon={
-        <IconSell
-          svgProps={{
-            className: "w-1rem",
-          }}
-        />
-      }
-      data={data}
-    />
-  );
-};
-
-export const TableBoxedLayoutActionButtonDeposit = ({data}: IButtonProps) => {
-  return (
-    <TableBoxedLayoutActionButton
-      modal={EnumModals.deposit}
-      title='Deposit'
-      icon={
-        <IconBuy
-          svgProps={{
-            className: "w-1rem",
-          }}
-        />
-      }
-      data={data}
-    />
-  );
-};
-
-export const TableBoxedLayoutActionButtonSwap = ({data}: IButtonProps) => {
-  return (
-    <TableBoxedLayoutActionButton
-      modal={EnumModals.swap}
-      title='Swap'
-      icon={
-        <IconSendReceive
-          svgProps={{
-            className: "w-1rem",
-          }}
-        />
-      }
-      data={data}
-    />
-  );
-};
-
-export const TableBoxedLayoutActionButtonMakePrimary = ({data = {}}: IButtonProps) => {
-  return (
-    <TableBoxedLayoutActionButton
-      modal={EnumModals.makePrimary}
-      title='Make Primary'
-      icon={
-        <IconPrimary
-          svgProps={{
-            className: "w-1rem",
-          }}
-        />
-      }
-      data={{
-        className: confirmationModalWidth,
-        ...(data as object),
-      }}
-    />
-  );
-};
-
 export const TableBoxedLayoutActionButtonEdit = ({data = {}}: IButtonProps) => {
   return (
     <TableBoxedLayoutActionButton
@@ -226,7 +132,7 @@ export const TableBoxedLayoutActionButtonEdit = ({data = {}}: IButtonProps) => {
       icon={
         <IconEdit
           svgProps={{
-            className: "w-1rem",
+            className: "w-0.75rem",
           }}
         />
       }
@@ -243,7 +149,7 @@ export const TableBoxedLayoutActionButtonView = ({data = {}}: IButtonProps) => {
       icon={
         <IconEye
           svgProps={{
-            className: "w-1rem",
+            className: "w-0.75rem",
           }}
         />
       }
@@ -260,7 +166,7 @@ export const TableBoxedLayoutActionButtonViewLink = ({to}: {to: string}) => {
     >
       <IconEye
         svgProps={{
-          className: "w-1rem",
+          className: "w-0.75rem",
         }}
       />
       View
@@ -276,126 +182,7 @@ export const TableBoxedLayoutActionButtonDelete = ({data = {}}: IButtonProps) =>
       icon={
         <IconTrash
           svgProps={{
-            className: "w-1rem",
-          }}
-        />
-      }
-      data={{
-        className: confirmationModalWidth,
-        ...(data as object),
-      }}
-    />
-  );
-};
-
-export const TableBoxedLayoutActionButtonSuspend = ({data = {}}: IButtonProps) => {
-  return (
-    <TableBoxedLayoutActionButton
-      modal={EnumModals.suspended}
-      title='Suspend'
-      icon={
-        <IconLock
-          svgProps={{
-            className: "w-1rem",
-          }}
-        />
-      }
-      data={{
-        className: confirmationModalWidth,
-        ...(data as object),
-      }}
-    />
-  );
-};
-
-export const TableBoxedLayoutActionButtonActive = ({data = {}}: IButtonProps) => {
-  return (
-    <TableBoxedLayoutActionButton
-      modal={EnumModals.active}
-      title='Active User'
-      icon={
-        <IconLock
-          svgProps={{
-            className: "w-1rem",
-          }}
-        />
-      }
-      data={{
-        className: confirmationModalWidth,
-        ...(data as object),
-      }}
-    />
-  );
-};
-
-export const TableBoxedLayoutActionButtonPhoneVerify = ({data = {}}: IButtonProps) => {
-  return (
-    <TableBoxedLayoutActionButton
-      modal={EnumModals.phoneVerify}
-      title='Phone Verify'
-      icon={
-        <IconCheck
-          svgProps={{
-            className: "w-1rem text-success",
-          }}
-        />
-      }
-      data={{
-        className: confirmationModalWidth,
-        ...(data as object),
-      }}
-    />
-  );
-};
-
-export const TableBoxedLayoutActionButtonEmailVerify = ({data = {}}: IButtonProps) => {
-  return (
-    <TableBoxedLayoutActionButton
-      modal={EnumModals.emailVerify}
-      title='Email Verify'
-      icon={
-        <IconCheck
-          svgProps={{
-            className: "w-1rem text-success",
-          }}
-        />
-      }
-      data={{
-        className: confirmationModalWidth,
-        ...(data as object),
-      }}
-    />
-  );
-};
-export const TableBoxedLayoutActionButtonAccept = ({data = {}}: IButtonProps) => {
-  return (
-    <TableBoxedLayoutActionButton
-      modal={EnumModals.accept}
-      title='Accept'
-      icon={
-        <IconCheck
-          svgProps={{
-            className: "w-1rem text-success",
-          }}
-        />
-      }
-      data={{
-        className: confirmationModalWidth,
-        ...(data as object),
-      }}
-    />
-  );
-};
-
-export const TableBoxedLayoutActionButtonReject = ({data = {}}: IButtonProps) => {
-  return (
-    <TableBoxedLayoutActionButton
-      modal={EnumModals.reject}
-      title='Reject'
-      icon={
-        <IconClose
-          svgProps={{
-            className: "w-1rem text-error",
+            className: "w-0.75rem",
           }}
         />
       }

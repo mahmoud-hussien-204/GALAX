@@ -1,3 +1,5 @@
+import IconWarning from "./icons/IconWarning";
+
 import ModalBody from "./ModalBody";
 
 import ModalFooter from "./ModalFooter";
@@ -21,10 +23,15 @@ const ConfirmationForm = ({
     <>
       <ModalHeader title='Confirmation' />
       <ModalBody>
-        <h5 className='mb-0.5rem text-18 text-white'>{message}</h5>
-        <h6 className='text-14'>
-          {subTitle || "Lorem ipsum dolor, sit amet consectetur adipisicing elit."}
-        </h6>
+        <div className='flex items-center gap-1rem text-primary'>
+          <IconWarning />
+          <div>
+            <h5 className='mb-0.5rem text-18 text-base-content'>{message}</h5>
+            <h6 className='text-14 text-neutral'>
+              {subTitle || "Lorem ipsum dolor, sit amet consectetur adipisicing elit."}
+            </h6>
+          </div>
+        </div>
       </ModalBody>
       <ModalFooter isLoading={isLoading} title={submitButtonTitle} />
     </>

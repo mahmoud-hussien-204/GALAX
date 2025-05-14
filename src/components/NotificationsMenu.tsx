@@ -23,8 +23,6 @@ const NotificationsMenu = () => {
     enabled: isUser,
   });
 
-  console.log("data", data);
-
   return (
     <Dropdown
       button={

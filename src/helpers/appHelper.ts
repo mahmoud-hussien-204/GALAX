@@ -11,13 +11,6 @@ export default class AppHelper {
     return str.length > len ? str.slice(0, len) + "..." : str;
   }
 
-  static handleAddress(str: string) {
-    if (!str) return "";
-    const count = 4;
-    if (str.length < 8) return str;
-    return str.slice(0, count) + " .... " + str.slice(count, count * 2);
-  }
-
   static hashEmail(email: string) {
     const atIndex = email.indexOf("@");
     const username = email.substring(0, atIndex);
@@ -101,38 +94,23 @@ export default class AppHelper {
     return data.toString();
   }
 
-  static convertStatusToBinary(status: string) {
-    switch (status.toLowerCase()) {
-      case "active":
-        return "1";
-      case "deactive":
-        return "0";
-      default:
-        return "0";
-    }
-  }
-
-  static convertSwitchValueToBinary(value: string | number | undefined) {
-    if (value === undefined) return 0;
-    if (typeof value === "number") return value;
-    if (!isNaN(Number(value))) return +value;
-    switch (value) {
-      case "on":
-        return 1;
-      case "off":
-        return 0;
-      case "true":
-        return 1;
-      case "false":
-        return 0;
-      default:
-        return 0;
-    }
-  }
-
   static handleSelectBoxOptions<T>(options: T[], label: keyof T, value: keyof T) {
     const optionsList = options.map((data) => ({label: data[label], value: data[value]}));
-
     return optionsList;
+  }
+
+  static getDirtyFields<T extends object>(
+    values: T,
+    dirtyFields: Partial<Readonly<{[key in keyof T]: boolean | undefined}>>
+  ) {
+    const payload: Partial<T> = {};
+
+    for (const key in values) {
+      if (Reflect.has(dirtyFields, key)) {
+        payload[key] = values[key];
+      }
+    }
+
+    return payload;
   }
 }
