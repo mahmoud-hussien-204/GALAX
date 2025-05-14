@@ -22,6 +22,7 @@ import profileRoutes from "./profile/Router";
 
 // new routes
 import salesRoutes from "./v2/sales/Router";
+import accountsRoutes from "./v2/accounts/Router";
 
 export default [
   {
@@ -29,6 +30,7 @@ export default [
     children: [
       // **** new routes ****
       ...salesRoutes,
+      ...accountsRoutes,
 
       // **** old routes from old project ****
       ...dashboardRoutes,
