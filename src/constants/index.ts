@@ -13,6 +13,8 @@ export const constantStatusColors = {
   [EnumAppStatuses.rejected]: "border-error/20 text-error",
   [EnumAppStatuses.REVIEW]: "border-error/20 text-error",
   [EnumAppStatuses.EXPIRED]: "border-warning/20 text-warning",
+  [EnumAppStatuses.SHOW]: "border-success/20 text-success",
+  [EnumAppStatuses.HIDE]: "border-error/20 text-error",
 };
 
 export const constantLanguage = [

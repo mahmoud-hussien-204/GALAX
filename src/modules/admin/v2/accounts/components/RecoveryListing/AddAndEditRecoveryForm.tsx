@@ -32,7 +32,6 @@ const AddAndEditRecoveryForm = ({form}: IProps) => {
           <div>
             <Label htmlFor='recovery-form-service-name'>Service Name</Label>
             <Input
-              type='text'
               {...form.register("service_name")}
               placeholder='Enter Service Name'
               id='recovery-form-service-name'
@@ -58,7 +57,7 @@ const AddAndEditRecoveryForm = ({form}: IProps) => {
       <div className='mb-1.25rem'>
         <Label htmlFor='recovery-form-service-whatsapp'>Service Whatsapp</Label>
         <Input
-          type='text'
+          type='tel'
           {...form.register("service_whatsapp")}
           placeholder='Enter phone number'
           id='recovery-form-service-whatsapp'
@@ -71,11 +70,11 @@ const AddAndEditRecoveryForm = ({form}: IProps) => {
         <div>
           <Label htmlFor='recovery-form-service-mobile'>Service Mobile</Label>
           <Input
+            type='tel'
             {...form.register("service_mobile")}
             placeholder='Enter Service Mobile'
             id='recovery-form-service-mobile'
             isError={!!form.formState.errors.service_mobile}
-            type='tel'
           />
           <ErrorMessage>{form.formState.errors.service_mobile?.message}</ErrorMessage>
         </div>
@@ -97,7 +96,6 @@ const AddAndEditRecoveryForm = ({form}: IProps) => {
         <div>
           <Label htmlFor='recovery-form-service-address'>Service Address</Label>
           <Input
-            type='text'
             {...form.register("service_address")}
             placeholder='Enter Service Address'
             id='recovery-form-service-address'
@@ -109,13 +107,36 @@ const AddAndEditRecoveryForm = ({form}: IProps) => {
         <div>
           <Label htmlFor='recovery-form-service-city'>Service City</Label>
           <Input
-            type='text'
             {...form.register("service_city")}
             placeholder='Enter Service City'
             id='recovery-form-service-city'
             isError={!!form.formState.errors.service_city}
           />
           <ErrorMessage>{form.formState.errors.service_city?.message}</ErrorMessage>
+        </div>
+      </div>
+
+      <div className='mb-1.25rem grid gap-1.25rem sm:grid-cols-2'>
+        <div>
+          <Label htmlFor='recovery-form-service-longitude'>Service longitude</Label>
+          <Input
+            {...form.register("service_longitude")}
+            placeholder='Enter Service longitude'
+            id='recovery-form-service-longitude'
+            isError={!!form.formState.errors.service_longitude}
+          />
+          <ErrorMessage>{form.formState.errors.service_longitude?.message}</ErrorMessage>
+        </div>
+
+        <div>
+          <Label htmlFor='recovery-form-service-latitude'>Service latitude</Label>
+          <Input
+            {...form.register("service_latitude")}
+            placeholder='Enter Service latitude'
+            id='recovery-form-service-latitude'
+            isError={!!form.formState.errors.service_latitude}
+          />
+          <ErrorMessage>{form.formState.errors.service_latitude?.message}</ErrorMessage>
         </div>
       </div>
 

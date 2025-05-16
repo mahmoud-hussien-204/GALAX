@@ -15,6 +15,7 @@ export default class InterceptorHelper {
       "Accept-Language": "en",
       "Content-Language": "en",
       "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
       Accept: "application/json",
       ...options.headers,
     };

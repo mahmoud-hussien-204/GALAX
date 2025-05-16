@@ -39,7 +39,7 @@ interface IProps {
 
 export const TableBoxedLayoutContainer = ({children, className}: IProps) => {
   return (
-    <div className='overflow-x-auto overflow-y-hidden'>
+    <div className='min-h-[55dvh] overflow-x-auto overflow-y-hidden'>
       <table className={AppHelper.classes("w-full min-w-min align-middle", className)}>
         {children}
       </table>

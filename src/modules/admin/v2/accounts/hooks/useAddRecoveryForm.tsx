@@ -43,22 +43,31 @@ export const recoveryListingSchema = yup.object<IRecoveryListing>().shape({
   service_latitude: yup
     .string()
     .notRequired()
-    .matches(/^(-?\d+(\.\d+)?)$/, "Latitude must be a valid number")
+    .test("service_latitude", "Latitude must be a valid number", (value) => {
+      if (!value) return true;
+      return /^(-?\d+(\.\d+)?)$/.test(value);
+    })
     .nullable(),
 
   service_longitude: yup
     .string()
     .notRequired()
-    .matches(/^(-?\d+(\.\d+)?)$/, "Longitude must be a valid number")
+    .test("service_longitude", "Longitude must be a valid number", (value) => {
+      if (!value) return true;
+      return /^(-?\d+(\.\d+)?)$/.test(value);
+    })
     .nullable(),
 
   expires_at: yup
     .string()
     .notRequired()
-    .matches(
-      /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(:\d{2})?$/,
-      "Expiration date must be in ISO format (YYYY-MM-DDTHH:mm or YYYY-MM-DDTHH:mm:ss)"
-    ),
+    .test("expires_at", "Expiration date must be in the future", (value) => {
+      if (!value) return true;
+      const regex = new RegExp(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(:\d{2})?$/);
+      if (regex.test(value)) return true;
+      return !value || new Date(value) > new Date();
+    })
+    .nullable(),
 
   status: yup
     .mixed<EnumRecoveryListingStatus>()
@@ -68,6 +77,12 @@ export const recoveryListingSchema = yup.object<IRecoveryListing>().shape({
 
 function useAddRecoveryForm() {
   const form = useForm<IRecoveryListing>({
+    defaultValues: {
+      service_logo: null,
+      service_description: "",
+      service_latitude: "",
+      service_longitude: "",
+    },
     resolver: yupResolver(recoveryListingSchema),
   });
 
@@ -81,7 +96,6 @@ function useAddRecoveryForm() {
     Object.entries(values).forEach(([key, value]) => {
       if (value) formData.append(key, value);
     });
-    console.log(...formData);
 
     mutate(formData, {
       onSuccess: () => {

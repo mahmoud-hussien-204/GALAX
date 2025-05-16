@@ -1,11 +1,13 @@
 import useModal from "@/hooks/useModal";
 
 import Button from "./Button";
+import AppHelper from "@/helpers/appHelper";
 
 interface IPropsBase {
   isLoading?: boolean;
   title?: string;
   children?: React.ReactNode;
+  className?: string;
 }
 
 interface IPropsWithChildren extends IPropsBase {
@@ -27,7 +29,7 @@ const ModalFooter = (props: Props) => {
   const {hide} = useModal();
 
   return (
-    <div className='mt-1rem flex items-center gap-1rem'>
+    <div className={AppHelper.classes("mt-1rem flex items-center gap-1rem", props.className)}>
       {props?.children ? (
         props.children
       ) : (

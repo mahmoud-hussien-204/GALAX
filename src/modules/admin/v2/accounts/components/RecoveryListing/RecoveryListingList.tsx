@@ -1,6 +1,10 @@
 import Status from "@/components/Status";
 
 import {
+  TableBoxedLayoutActionButtonDelete,
+  TableBoxedLayoutActionButtonEdit,
+  TableBoxedLayoutActionButtonView,
+  TableBoxedLayoutActions,
   TableBoxedLayoutContainer,
   TableBoxedLayoutSkeleton,
   TableBoxedLayoutTBody,
@@ -43,6 +47,7 @@ const RecoveryListingList = ({
             <TableBoxedLayoutTH>Service City</TableBoxedLayoutTH>
             <TableBoxedLayoutTH>Expires At</TableBoxedLayoutTH>
             <TableBoxedLayoutTH>Status</TableBoxedLayoutTH>
+            <TableBoxedLayoutTH>Actions</TableBoxedLayoutTH>
           </TableBoxedLayoutTR>
         </TableBoxedLayoutTHead>
 
@@ -72,6 +77,13 @@ const RecoveryListingList = ({
                 </TableBoxedLayoutTD>
                 <TableBoxedLayoutTD>
                   <Status status={item.status} />
+                </TableBoxedLayoutTD>
+                <TableBoxedLayoutTD>
+                  <TableBoxedLayoutActions>
+                    <TableBoxedLayoutActionButtonView data={item} />
+                    <TableBoxedLayoutActionButtonEdit data={item} />
+                    <TableBoxedLayoutActionButtonDelete data={item} />
+                  </TableBoxedLayoutActions>
                 </TableBoxedLayoutTD>
               </TableBoxedLayoutTR>
             ))
