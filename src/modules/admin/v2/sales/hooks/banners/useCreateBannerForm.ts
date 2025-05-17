@@ -25,14 +25,16 @@ export const schema: Yup.ObjectSchema<ICreateBannerForm> = Yup.object().shape({
     .oneOf(Object.values(EnumBannerStatus), "Invalid status")
     .required("Status is required"),
 
-  image: Yup.mixed<File>()
+  image: Yup.mixed<File | string>()
     .required("Image is required")
-    .test("fileType", "Only image files are allowed", (value) =>
-      value ? ["image/jpeg", "image/png", "image/webp"].includes(value.type) : false
-    )
-    .test("fileSize", "File size must be less than 5MB", (value) =>
-      value ? value.size <= 5 * 1024 * 1024 : false
-    ),
+    .test("fileType", "Only image files are allowed", (value) => {
+      if (typeof value === "string") return true;
+      return value ? ["image/jpeg", "image/png", "image/webp"].includes(value.type) : false;
+    })
+    .test("fileSize", "File size must be less than 5MB", (value) => {
+      if (typeof value === "string") return true;
+      return value ? value.size <= 5 * 1024 * 1024 : false;
+    }),
 });
 
 const useCreateBannerForm = () => {

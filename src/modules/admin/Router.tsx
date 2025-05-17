@@ -16,13 +16,13 @@ import membershipRoutes from "./membership/Router";
 
 import bankManagementRoutes from "./bankManagement/Router";
 
-import settingsRoutes from "./settings/Router";
-
 import profileRoutes from "./profile/Router";
 
 // new routes
 import salesRoutes from "./v2/sales/Router";
 import accountsRoutes from "./v2/accounts/Router";
+
+import settingsRoutes from "./v2/settings/Router";
 
 export default [
   {
@@ -31,6 +31,7 @@ export default [
       // **** new routes ****
       ...salesRoutes,
       ...accountsRoutes,
+      ...settingsRoutes,
 
       // **** old routes from old project ****
       ...dashboardRoutes,
@@ -41,7 +42,6 @@ export default [
       ...transactionsRoutes,
       ...membershipRoutes,
       ...bankManagementRoutes,
-      ...settingsRoutes,
       ...profileRoutes,
     ],
   },

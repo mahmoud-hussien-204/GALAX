@@ -27,7 +27,7 @@ const Tabs = ({tabs, to}: IProps) => {
                   search: `?tab=${tab.value}`,
                 }
           }
-          className={AppHelper.classes("tab max-w-fit whitespace-nowrap", {
+          className={AppHelper.classes("tab w-fit min-w-[150px] whitespace-nowrap", {
             "tab-active": tabSearchParams === tab.value || pathname.endsWith(tab.value),
           })}
         >

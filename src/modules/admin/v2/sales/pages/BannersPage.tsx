@@ -44,6 +44,7 @@ import DataNotFound from "@/components/DataNotFound";
 
 import ViewBannerForm from "../components/banners/ViewBannerForm";
 import DeleteForm from "../components/banners/DeleteForm";
+import IconLink from "@/components/icons/IconLink";
 
 export const Component = () => {
   usePageTitle("Banners");
@@ -92,7 +93,16 @@ export const Component = () => {
                     <TableBoxedLayoutTR key={item.id}>
                       <TableBoxedLayoutTD>{item.id}</TableBoxedLayoutTD>
                       <TableBoxedLayoutTD>{item.title}</TableBoxedLayoutTD>
-                      <TableBoxedLayoutTD>{item.link}</TableBoxedLayoutTD>
+                      <TableBoxedLayoutTD>
+                        <a
+                          href={item.link}
+                          target='_blank'
+                          rel='noopener noreferrer'
+                          className='flex items-center gap-0.5rem'
+                        >
+                          Visit <IconLink svgProps={{className: "size-0.75rem"}} />
+                        </a>
+                      </TableBoxedLayoutTD>
                       <TableBoxedLayoutTD>
                         <Status status={item.status} />
                       </TableBoxedLayoutTD>

@@ -5,6 +5,7 @@ import AppHelper from "@/helpers/appHelper";
 
 interface IPropsBase {
   isLoading?: boolean;
+  disabled?: boolean;
   title?: string;
   children?: React.ReactNode;
   className?: string;
@@ -13,6 +14,7 @@ interface IPropsBase {
 interface IPropsWithChildren extends IPropsBase {
   children: React.ReactNode;
   isLoading?: boolean;
+  disabled?: boolean;
   title?: string;
 }
 
@@ -20,6 +22,7 @@ interface IPropsWithChildren extends IPropsBase {
 interface IPropsWithoutChildren extends IPropsBase {
   children?: undefined;
   isLoading: boolean;
+  disabled?: boolean;
   title: string;
 }
 
@@ -42,7 +45,12 @@ const ModalFooter = (props: Props) => {
           >
             Cancel
           </Button>
-          <Button type='submit' className='min-w-[100px] flex-1' isLoading={props.isLoading}>
+          <Button
+            type='submit'
+            className='min-w-[100px] flex-1'
+            disabled={props.disabled}
+            isLoading={props.isLoading}
+          >
             {props.title}
           </Button>
         </>
