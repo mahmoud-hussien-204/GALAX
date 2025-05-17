@@ -118,7 +118,7 @@ export const constantSidebar: ISidebarItem = {
       isSubmenu: false,
     },
     {
-      title: "Settings",
+      title: "Settings & Profile",
       path: "/admin/settings/general",
       icon: "cog",
       isSubmenu: false,

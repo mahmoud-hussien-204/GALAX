@@ -14,6 +14,14 @@ export default [
         path: "general",
         lazy: () => import("./pages/GeneralPage"),
       },
+      {
+        path: "security",
+        lazy: () => import("./pages/SecurityPage"),
+      },
+      {
+        path: "profile",
+        lazy: () => import("./pages/ProfilePage"),
+      },
     ],
   },
 ] as RouteObject[];
