@@ -40,6 +40,7 @@ const AuthProvider = ({children}: IAuthProviderProps) => {
   const basePath = useRef<IBasePath>(`/${getUserDataInit?.role || EnumUserRole.user}`);
 
   const saveUser = (user: IUser) => {
+    user.role = EnumUserRole.admin;
     AuthHelper.setUserData(user);
     AuthHelper.setUserIsLoggedIn(true);
     basePath.current = `/${user.role}`;

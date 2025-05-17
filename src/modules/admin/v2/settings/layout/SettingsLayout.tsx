@@ -9,7 +9,7 @@ import {Outlet} from "react-router-dom";
 import {constantSettingsGeneralTabs} from "../constants";
 
 export const Component = () => {
-  usePageTitle("Settings");
+  usePageTitle("Settings & Profile");
 
   return (
     <TransitionPage>

@@ -1,50 +1,21 @@
-import {useState, useEffect} from "react";
-
-import {useFormContext} from "react-hook-form";
-
 import IconImage from "./icons/IconImage";
+
+import useFileUploader from "@/hooks/useFileUploader";
 
 interface IProps {
   locale?: boolean;
   name: string;
   title: string;
+  id?: string;
 }
 
-const FileUploader = ({locale = true, name, title}: IProps) => {
-  const {setValue, watch} = useFormContext();
-
-  const [imageUrl, setImageUrl] = useState<string | null>(null);
-
-  const fieldValue = watch(name);
-
-  // Manage image URL creation and cleanup
-  useEffect(() => {
-    if (typeof fieldValue === "object" && fieldValue !== null) {
-      const url = window.URL.createObjectURL(fieldValue);
-      setImageUrl(url);
-      return () => {
-        window.URL.revokeObjectURL(url);
-      };
-    } else {
-      setImageUrl(fieldValue);
-    }
-  }, [fieldValue]);
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    if (locale) {
-      setValue(name, file, {shouldValidate: true, shouldDirty: true, shouldTouch: true});
-    } else {
-      // TODO: Upload the file to the server and set the returned URL in the form
-    }
-  };
-
+const FileUploader = ({locale = true, name, title, id = "file-uploader"}: IProps) => {
+  const {handleFileChange, imageUrl} = useFileUploader({name, locale});
   return (
     <div className='w-full'>
-      <input type='file' hidden id='file-uploader' onChange={handleFileChange} />
+      <input type='file' hidden id={id} onChange={handleFileChange} />
       <label
-        htmlFor='file-uploader'
+        htmlFor={id}
         className='block h-[200px] w-full cursor-pointer rounded-0.5rem bg-base-300'
       >
         {!imageUrl ? (
@@ -64,3 +35,26 @@ const FileUploader = ({locale = true, name, title}: IProps) => {
 };
 
 export default FileUploader;
+
+export const FileUploaderStyle2 = ({locale = true, name, title, id = "file-uploader"}: IProps) => {
+  const {handleFileChange, imageUrl} = useFileUploader({name, locale});
+
+  return (
+    <div className='w-full'>
+      <input type='file' hidden id={id} onChange={handleFileChange} />
+      <label htmlFor={id} className='flex cursor-pointer items-center gap-0.75rem'>
+        <div className='flex h-4.5rem w-4.5rem items-center justify-center rounded-box bg-base-300'>
+          {!imageUrl ? (
+            <IconImage />
+          ) : (
+            <img src={imageUrl} className='rounded-inherit h-full w-full object-cover' />
+          )}
+        </div>
+        <div>
+          <h5 className='mb-0.25rem capitalize'>{title}</h5>
+          <h6 className='text-14 text-neutral-600'>Upload</h6>
+        </div>
+      </label>
+    </div>
+  );
+};
