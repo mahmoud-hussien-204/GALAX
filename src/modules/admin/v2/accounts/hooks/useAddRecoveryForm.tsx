@@ -3,7 +3,7 @@ import {IRecoveryListing} from "../interfaces";
 import * as yup from "yup";
 import {EnumRecoveryListingStatus} from "../enums";
 import {yupResolver} from "@hookform/resolvers/yup";
-import {apiAddRecoveryListings} from "../services";
+import {apiAddRecoveryListings} from "../services/recoveryService";
 import useMutation from "@/hooks/useMutation";
 
 const fileSchema = yup.mixed<File>().test("fileType", "Only image files are allowed", (value) => {

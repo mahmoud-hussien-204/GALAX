@@ -16,7 +16,7 @@ import {
   apiAcceptKycVerification,
   apiGetKycVerificationDetails,
   apiRejectKycVerification,
-} from "../services";
+} from "../services/recoveryService";
 
 import WithLoading from "@/components/WithLoading";
 

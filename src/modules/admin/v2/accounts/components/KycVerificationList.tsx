@@ -24,7 +24,7 @@ import DataNotFound from "@/components/DataNotFound";
 
 import useQuery from "@/hooks/useQuery";
 
-import {apiGetKycList} from "../services";
+import {apiGetKycList} from "../services/recoveryService";
 
 import useApiUrlFilter from "@/hooks/useApiUrlFilter";
 

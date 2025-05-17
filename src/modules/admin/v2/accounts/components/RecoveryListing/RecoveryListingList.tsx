@@ -78,7 +78,7 @@ const RecoveryListingList = ({
                 <TableBoxedLayoutTD>
                   <Status status={item.status} />
                 </TableBoxedLayoutTD>
-                <TableBoxedLayoutTD>
+                <TableBoxedLayoutTD className='relative'>
                   <TableBoxedLayoutActions>
                     <TableBoxedLayoutActionButtonView data={item} />
                     <TableBoxedLayoutActionButtonEdit data={item} />

@@ -23,7 +23,7 @@ export const DropdownMenu = ({children, className}: IProps) => {
     <div
       tabIndex={0}
       className={AppHelper.classes(
-        "dropdown-content absolute z-20 mt-1rem min-w-[15rem] rounded-box bg-base-300 px-1rem py-0.75rem",
+        "dropdown-content absolute !right-[6.5%] z-20 mt-1rem min-w-[15rem] rounded-box bg-base-300 px-1rem py-0.75rem",
         className
       )}
     >

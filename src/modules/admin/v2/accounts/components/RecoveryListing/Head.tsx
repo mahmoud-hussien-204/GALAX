@@ -15,7 +15,7 @@ const Head = () => {
     <div className='flex flex-wrap items-center justify-between gap-1.25rem'>
       <div className='flex items-center gap-1.5rem'>
         <div className='w-full max-w-full sm:w-[300px]'>
-          <Search placeholder='Search in banners' />
+          <Search placeholder='Search in Recovery Listing' />
         </div>
         {/* <PageFilterSelect /> */}
       </div>

@@ -1,5 +1,5 @@
 import InterceptorHelper from "@/helpers/interceptorHelper";
-import {IRecoveryListing} from "./interfaces";
+import {IRecoveryListing} from "../interfaces";
 
 export const getAllRecoveryListings = () => {
   return InterceptorHelper.intercept<IResponse<IRecoveryListing[]>>(`/towing-services`);

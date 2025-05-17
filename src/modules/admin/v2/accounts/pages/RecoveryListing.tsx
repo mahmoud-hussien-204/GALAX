@@ -2,7 +2,7 @@ import TransitionPage from "@/components/TransitionPage";
 import usePageTitle from "@/hooks/usePageTitle";
 import useQuery from "@/hooks/useQuery";
 import ModalProvider from "@/providers/ModalProvider";
-import {getAllRecoveryListings} from "../services";
+import {getAllRecoveryListings} from "../services/recoveryService";
 import RecoveryListingList from "../components/RecoveryListing/RecoveryListingList";
 import Head from "../components/RecoveryListing/Head";
 import Modal from "@/components/Modal";
@@ -65,4 +65,4 @@ export const Component = () => {
   );
 };
 
-Component.displayName = "CarsPage";
+Component.displayName = "RecoveryListingPage";
