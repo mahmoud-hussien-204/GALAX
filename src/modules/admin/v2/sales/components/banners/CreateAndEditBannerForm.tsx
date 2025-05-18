@@ -8,7 +8,7 @@ import ModalBody from "@/components/ModalBody";
 
 import {UseFormReturn} from "react-hook-form";
 
-import {IEditBannerForm} from "../../interfaces";
+import {ICreateBannerForm, IEditBannerForm} from "../../interfaces";
 
 import Select from "@/components/Select";
 
@@ -17,7 +17,7 @@ import {constantBannerStatus} from "../../constants";
 import FileUploader from "@/components/FileUploader";
 
 interface IProps {
-  form: UseFormReturn<IEditBannerForm>;
+  form: UseFormReturn<IEditBannerForm | ICreateBannerForm>;
   type: "create" | "edit";
 }
 

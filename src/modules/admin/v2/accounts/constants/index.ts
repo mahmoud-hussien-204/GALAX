@@ -1,31 +1,37 @@
-import {ENUM_USERS_STATUS} from "../enums";
+import {EnumGarageStatus} from "../enums";
 
-export const constantUsersStatus = [
+export const constantGarageStatus = [
   {
-    label: "Users Status",
+    label: "Select Garage Status",
     value: "",
     disabled: true,
   },
   {
-    label: "Active Users",
-    value: ENUM_USERS_STATUS.ACTIVE_USERS,
+    label: EnumGarageStatus.SHOW,
+    value: EnumGarageStatus.SHOW,
   },
   {
-    label: "Suspended Users",
-    value: ENUM_USERS_STATUS.SUSPEND_USER,
+    label: EnumGarageStatus.HIDE,
+    value: EnumGarageStatus.HIDE,
   },
-  {
-    label: "Deleted Users",
-    value: ENUM_USERS_STATUS.DELETED_USER,
-  },
-  {
-    label: "Email Pending",
-    value: ENUM_USERS_STATUS.EMAIL_PENDING,
-  },
-  {
-    label: "Phone Pending",
-    value: ENUM_USERS_STATUS.PHONE_PENDING,
-  },
+  // {
+  //   label: EnumGarageStatus.PENDING,
+  //   value: EnumGarageStatus.PENDING,
+  // },
+  // {
+  //   label: EnumGarageStatus.REVIEW,
+  //   value: EnumGarageStatus.REVIEW,
+  // },
+  // {
+  //   label: EnumGarageStatus.APPROVED,
+  //   value: EnumGarageStatus.APPROVED,
+  // },
+  // {
+  //   label: EnumGarageStatus.REJECTED,
+  //   value: EnumGarageStatus.REJECTED,
+  // },
+  // {
+  //   label: EnumGarageStatus.EXPIRED,
+  //   value: EnumGarageStatus.EXPIRED,
+  // },
 ];
-
-export const userActions = ["Email_verify", "Phone_verify", "Delete", "Edit", "Suspend", "View"];

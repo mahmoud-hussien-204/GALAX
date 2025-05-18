@@ -17,6 +17,7 @@ const EditBannerForm = () => {
     <FormProvider {...form}>
       <form noValidate name='edit-banner-form' id='edit-banner-form' onSubmit={handleSubmit}>
         <ModalHeader title='Edit Banner' />
+        {/* @ts-expect-error fix later */}
         <CreateAndEditBannerForm form={form} type='edit' />
         <ModalFooter isLoading={isPending} disabled={!isDirty} title='Update Banner' />
       </form>

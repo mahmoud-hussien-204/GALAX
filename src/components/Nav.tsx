@@ -83,7 +83,7 @@ const LinkWithSubMenu = ({linkData}: ILinkProps) => {
       <input type='checkbox' className='peer min-h-0' defaultChecked={isActiveClass()} />
       <div
         className={AppHelper.classes(
-          "collapse-title flex min-h-0 items-center gap-0.75rem px-0.75rem py-0.5rem after:!top-1/2 after:-translate-y-1/2",
+          "collapse-title flex min-h-0 items-center gap-0.75rem px-0.75rem py-0.5rem text-14 after:!top-1/2 after:-translate-y-1/2",
           {
             "rounded-btn bg-primary text-base-100": isActiveClass(),
           }
@@ -95,7 +95,7 @@ const LinkWithSubMenu = ({linkData}: ILinkProps) => {
       <div className='collapse-content ms-2rem px-0 !pb-0'>
         {linkData.isSubmenu &&
           linkData.subMenu.map((item) => (
-            <NavLinkItem className='text-14' key={item.path} path={item.path} isSubmenu>
+            <NavLinkItem key={item.path} path={item.path} isSubmenu>
               {item.title}
             </NavLinkItem>
           ))}
@@ -131,7 +131,7 @@ const NavLinkItem = ({
       to={path}
       end={end}
       className={({isActive}) => {
-        const classes = `flex items-center gap-0.75rem px-0.75rem py-0.5rem ${className}`;
+        const classes = `flex items-center gap-0.75rem px-0.75rem py-0.5rem text-13 ${className}`;
         const activeClass = isSubmenu ? "text-primary" : "rounded-btn bg-primary text-base-100";
         return isActive ? `${classes} ${activeClass}` : `${classes}`;
       }}

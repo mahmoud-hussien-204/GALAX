@@ -1,5 +1,3 @@
-import React from "react";
-
 const IconWarning = ({pathProps, svgProps}: ISvgIconProps) => {
   return (
     <svg

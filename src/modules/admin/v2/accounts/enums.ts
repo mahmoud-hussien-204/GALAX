@@ -1,4 +1,4 @@
-export enum EnumRecoveryListingStatus {
+export enum EnumGarageStatus {
   SHOW = "show",
   HIDE = "hide",
 }
