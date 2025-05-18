@@ -4,6 +4,7 @@ import {useRouteError, isRouteErrorResponse} from "react-router";
 
 const ErrorLayout = () => {
   const routeError = useRouteError();
+  console.log(routeError);
 
   return (
     <section className='flex h-screen items-center justify-center py-2rem'>

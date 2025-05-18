@@ -4,7 +4,6 @@ import {RouteObject} from "react-router";
 import accountsRoutes from "./v2/accounts/Router";
 
 import salesRoutes from "./v2/sales/Router";
-import accountsRoutes from "./v2/accounts/Router";
 
 import settingsRoutes from "./v2/settings/Router";
 

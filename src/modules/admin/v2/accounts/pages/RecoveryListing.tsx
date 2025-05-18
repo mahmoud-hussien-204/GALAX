@@ -8,7 +8,7 @@ import Head from "../components/RecoveryListing/Head";
 import Modal from "@/components/Modal";
 import AddRecoveryForm from "../components/RecoveryListing/AddRecoveryForm";
 import ViewRecoveryDetails from "../components/RecoveryListing/ViewRecoveryDetails";
-import {EnumRecoveryListingStatus} from "../enums";
+import {EnumGarageStatus} from "../enums";
 
 export const Component = () => {
   usePageTitle("Recovery Listing");
@@ -37,7 +37,7 @@ export const Component = () => {
                     service_phone: "01121945676",
                     service_whatsapp: "01121945676",
                     expires_at: "2022-01-01T00:00:00.000Z",
-                    status: EnumRecoveryListingStatus.SHOW,
+                    status: EnumGarageStatus.SHOW,
                   },
                   {
                     service_address: "test address",
@@ -50,7 +50,7 @@ export const Component = () => {
                     service_phone: "01121945676",
                     service_whatsapp: "01121945676",
                     expires_at: "2022-01-01T00:00:00.000Z",
-                    status: EnumRecoveryListingStatus.SHOW,
+                    status: EnumGarageStatus.SHOW,
                   },
                 ]
               : []

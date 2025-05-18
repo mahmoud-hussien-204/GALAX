@@ -14,7 +14,7 @@ import FileUploader from "@/components/FileUploader";
 
 import RadioBoxInput from "@/components/RadioBoxInput";
 
-import {EnumRecoveryListingStatus} from "../../enums";
+import {EnumGarageStatus} from "../../enums";
 
 import Textarea from "@/components/Textarea";
 
@@ -147,12 +147,12 @@ const AddAndEditRecoveryForm = ({form}: IProps) => {
             <RadioBoxInput
               {...form.register("status")}
               label='Active'
-              value={EnumRecoveryListingStatus.SHOW}
+              value={EnumGarageStatus.SHOW}
             />
             <RadioBoxInput
               {...form.register("status")}
               label='Inactive'
-              value={EnumRecoveryListingStatus.HIDE}
+              value={EnumGarageStatus.HIDE}
             />
           </div>
           <ErrorMessage>{form.formState.errors.status?.message}</ErrorMessage>
