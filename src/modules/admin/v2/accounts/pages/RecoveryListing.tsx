@@ -3,11 +3,11 @@ import usePageTitle from "@/hooks/usePageTitle";
 import useQuery from "@/hooks/useQuery";
 import ModalProvider from "@/providers/ModalProvider";
 import {getAllRecoveryListings} from "../services/recoveryService";
-import RecoveryListingList from "../components/RecoveryListing/RecoveryListingList";
-import Head from "../components/RecoveryListing/Head";
+import RecoveryListingList from "../components/recovery/RecoveryListingList";
+import Head from "../components/recovery/Head";
 import Modal from "@/components/Modal";
-import AddRecoveryForm from "../components/RecoveryListing/AddRecoveryForm";
-import ViewRecoveryDetails from "../components/RecoveryListing/ViewRecoveryDetails";
+import AddRecoveryForm from "../components/recovery/AddRecoveryForm";
+import ViewRecoveryDetails from "../components/recovery/ViewRecoveryDetails";
 import {EnumGarageStatus} from "../enums";
 
 export const Component = () => {
