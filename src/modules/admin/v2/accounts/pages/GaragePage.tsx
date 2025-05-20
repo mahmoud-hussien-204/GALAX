@@ -67,14 +67,9 @@ export const Component = () => {
             <TableBoxedLayoutContainer>
               <TableBoxedLayoutTHead>
                 <TableBoxedLayoutTR>
-                  <TableBoxedLayoutTH>ID</TableBoxedLayoutTH>
                   <TableBoxedLayoutTH>Garage Name</TableBoxedLayoutTH>
                   <TableBoxedLayoutTH>Garage Email</TableBoxedLayoutTH>
                   <TableBoxedLayoutTH>Garage Phone</TableBoxedLayoutTH>
-                  <TableBoxedLayoutTH>Garage Mobile</TableBoxedLayoutTH>
-                  <TableBoxedLayoutTH>Garage Whatsapp</TableBoxedLayoutTH>
-                  <TableBoxedLayoutTH>Garage Address</TableBoxedLayoutTH>
-                  <TableBoxedLayoutTH>Garage City</TableBoxedLayoutTH>
                   <TableBoxedLayoutTH>Status</TableBoxedLayoutTH>
                   <TableBoxedLayoutTH>Expires at</TableBoxedLayoutTH>
                   <TableBoxedLayoutTH>Actions</TableBoxedLayoutTH>
@@ -96,15 +91,9 @@ export const Component = () => {
                 ) : garagesList.length > 0 ? (
                   garagesList.map((item) => (
                     <TableBoxedLayoutTR key={item.id}>
-                      <TableBoxedLayoutTD>{item.id}</TableBoxedLayoutTD>
                       <TableBoxedLayoutTD>{item.garage_name}</TableBoxedLayoutTD>
                       <TableBoxedLayoutTD>{item.garage_email}</TableBoxedLayoutTD>
                       <TableBoxedLayoutTD>{item.garage_phone}</TableBoxedLayoutTD>
-                      <TableBoxedLayoutTD>{item.garage_mobile}</TableBoxedLayoutTD>
-                      <TableBoxedLayoutTD>{item.garage_whatsapp}</TableBoxedLayoutTD>
-                      <TableBoxedLayoutTD>{item.garage_address}</TableBoxedLayoutTD>
-                      <TableBoxedLayoutTD>{item.garage_city}</TableBoxedLayoutTD>
-
                       <TableBoxedLayoutTD>
                         <Status status={item.status} />
                       </TableBoxedLayoutTD>

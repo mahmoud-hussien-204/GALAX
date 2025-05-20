@@ -18,7 +18,7 @@ import * as Yup from "yup";
 
 import AppHelper from "@/helpers/appHelper";
 
-const extenedSchema = schema.shape({
+const extendSchema = schema.shape({
   id: Yup.string().required(),
 });
 
@@ -28,9 +28,10 @@ const useEditBannerForm = () => {
   const data = dataProps as IGarage;
 
   const form = useForm<IEditGarageForm>({
-    resolver: yupResolver(extenedSchema),
+    resolver: yupResolver(extendSchema),
     mode: "onTouched",
     defaultValues: {
+      ...data,
       id: data?.id || "",
     },
   });

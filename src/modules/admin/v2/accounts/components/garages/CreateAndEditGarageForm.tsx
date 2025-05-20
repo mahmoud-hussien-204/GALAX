@@ -15,7 +15,12 @@ import Select from "@/components/Select";
 import {constantGarageStatus} from "../../constants";
 
 import {FileUploaderStyle2} from "@/components/FileUploader";
+
 import Textarea from "@/components/Textarea";
+
+import DateInput from "@/components/DateInput";
+
+import dayjs from "dayjs";
 
 interface IProps {
   form: UseFormReturn<ICreateGarageForm | IEditGarageForm>;
@@ -23,6 +28,12 @@ interface IProps {
 }
 
 const CreateAndEditGarageForm = ({form}: IProps) => {
+  const expiresAtField = form.watch("expires_at");
+
+  const expiresAtValue = expiresAtField ? dayjs(expiresAtField).toDate() : undefined;
+
+  const expiresAtMinValue = dayjs().add(1, "day").toDate();
+
   return (
     <ModalBody>
       <div className='mb-1.25rem'>
@@ -153,7 +164,19 @@ const CreateAndEditGarageForm = ({form}: IProps) => {
 
       <div className='mb-1.25rem'>
         <Label htmlFor='create-garage-form-expires_at'>Expires At</Label>
-
+        <DateInput
+          name='expires_at'
+          onChange={(value) => {
+            if (!value) return;
+            form.setValue("expires_at", dayjs(value).format("YYYY-MM-DD"), {
+              shouldValidate: true,
+              shouldDirty: true,
+            });
+          }}
+          selected={expiresAtValue}
+          minDate={expiresAtMinValue}
+          placeholderText='Expires At'
+        />
         <ErrorMessage>{form.formState.errors.expires_at?.message}</ErrorMessage>
       </div>
 
