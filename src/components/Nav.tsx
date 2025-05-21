@@ -89,7 +89,7 @@ const LinkWithSubMenu = ({linkData}: ILinkProps) => {
           }
         )}
       >
-        {icons[linkData.icon as keyof typeof icons]}
+        <span>{icons[linkData.icon as keyof typeof icons]}</span>
         <span>{linkData.title}</span>
       </div>
       <div className='collapse-content ms-2rem px-0 !pb-0'>

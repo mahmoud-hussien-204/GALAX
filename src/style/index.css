@@ -15,3 +15,7 @@
       4px 4px 2px #dbae59;
   }
 }
+
+.dropdown {
+  position: static;
+}

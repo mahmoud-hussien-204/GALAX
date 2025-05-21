@@ -17,6 +17,7 @@ export default [
       ...promoCodesRoutes,
       ...accountsRoutes,
       ...salesRoutes,
+      ...accountsRoutes,
       ...settingsRoutes,
     ],
   },

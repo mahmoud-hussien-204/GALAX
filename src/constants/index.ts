@@ -1,5 +1,7 @@
 import {EnumAppStatuses} from "@/enums";
 
+export const AppName = "Qalaqs";
+
 export const constantStatusColors = {
   [EnumAppStatuses.pending]: "border-warning/20 text-warning",
   [EnumAppStatuses.active]: "border-success/20 text-success",
