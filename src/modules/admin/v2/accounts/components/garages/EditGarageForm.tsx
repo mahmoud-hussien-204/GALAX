@@ -19,7 +19,7 @@ const EditGarageForm = () => {
         <ModalHeader title='Edit Garage' />
         {/* @ts-expect-error fix later */}
         <CreateAndEditGarageForm form={form} type='edit' />
-        <ModalFooter isLoading={isPending} disabled={!isDirty} title='Update Garage' />
+        <ModalFooter isLoading={isPending} disabled={!isDirty || isPending} title='Update Garage' />
       </form>
     </FormProvider>
   );
