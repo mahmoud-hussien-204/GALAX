@@ -1,8 +1,12 @@
 import InterceptorHelper from "@/helpers/interceptorHelper";
 import {IRecoveryListing} from "../interfaces";
+import AppHelper from "@/helpers/appHelper";
 
-export const getAllRecoveryListings = () => {
-  return InterceptorHelper.intercept<IResponse<IRecoveryListing[]>>(`/towing-services`);
+export const getAllRecoveryListings = (params: IQueryParams) => {
+  const paramsString = AppHelper.urlSearchParams(params);
+  return InterceptorHelper.intercept<IResponse<IRecoveryListing[]>>(
+    `/towing-services?${paramsString}`
+  );
 };
 
 export const apiAddRecoveryListings = (data: FormData) => {

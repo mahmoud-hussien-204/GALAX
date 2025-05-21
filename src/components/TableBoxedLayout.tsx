@@ -193,3 +193,13 @@ export const TableBoxedLayoutActionButtonDelete = ({data = {}}: IButtonProps) =>
     />
   );
 };
+
+export const TableBoxedLayoutLoading = ({rows = 10, cols = 8}: {rows: number; cols: number}) => {
+  return Array.from({length: rows}).map((_, index) => (
+    <TableBoxedLayoutTR key={index}>
+      {Array.from({length: cols}).map((_, index) => (
+        <TableBoxedLayoutSkeleton key={index} />
+      ))}
+    </TableBoxedLayoutTR>
+  ));
+};

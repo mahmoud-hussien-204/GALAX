@@ -10,20 +10,33 @@ import AddRecoveryForm from "../components/recovery/AddRecoveryForm";
 import ViewRecoveryDetails from "../components/recovery/ViewRecoveryDetails";
 import EditRecoveryForm from "../components/recovery/EditRecoveryForm";
 import DeleteRecoveryForm from "../components/recovery/DeleteRecoveryForm";
+import useApiUrlFilter from "@/hooks/useApiUrlFilter";
 
 export const Component = () => {
   usePageTitle("Recovery Listing");
 
+  const {
+    pageSearchParams: page,
+    searchSearchParams: search,
+    limitSearchParams: limit,
+  } = useApiUrlFilter();
+
   const {data, isLoading} = useQuery({
-    queryFn: getAllRecoveryListings,
-    queryKey: ["admin-get-recovery-listings"],
+    queryFn: () => getAllRecoveryListings({page, search, limit}),
+    queryKey: ["admin-get-recovery-listings", page, search, limit],
   });
+
+  const totalPages = 1;
 
   return (
     <ModalProvider>
       <TransitionPage>
         <Head />
-        <RecoveryListingList data={data?.data || []} isLoading={isLoading} totalPages={1} />
+        <RecoveryListingList
+          data={data?.data || []}
+          isLoading={isLoading}
+          totalPages={totalPages}
+        />
 
         <Modal
           add={AddRecoveryForm}

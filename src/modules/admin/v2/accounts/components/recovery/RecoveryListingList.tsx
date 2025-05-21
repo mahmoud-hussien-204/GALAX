@@ -6,7 +6,7 @@ import {
   TableBoxedLayoutActionButtonView,
   TableBoxedLayoutActions,
   TableBoxedLayoutContainer,
-  TableBoxedLayoutSkeleton,
+  TableBoxedLayoutLoading,
   TableBoxedLayoutTBody,
   TableBoxedLayoutTD,
   TableBoxedLayoutTH,
@@ -53,17 +53,7 @@ const RecoveryListingList = ({
 
         <TableBoxedLayoutTBody>
           {isLoading ? (
-            Array.from({length: 10}).map((_, index) => (
-              <TableBoxedLayoutTR key={index} className='!bg-red-300'>
-                <TableBoxedLayoutSkeleton />
-                <TableBoxedLayoutSkeleton />
-                <TableBoxedLayoutSkeleton />
-                <TableBoxedLayoutSkeleton />
-                <TableBoxedLayoutSkeleton />
-                <TableBoxedLayoutSkeleton />
-                <TableBoxedLayoutSkeleton />
-              </TableBoxedLayoutTR>
-            ))
+            <TableBoxedLayoutLoading cols={8} rows={10} />
           ) : data.length > 0 ? (
             data.map((item, index) => (
               <TableBoxedLayoutTR key={index}>
@@ -88,7 +78,7 @@ const RecoveryListingList = ({
               </TableBoxedLayoutTR>
             ))
           ) : (
-            <DataNotFound colSpan={6} />
+            <DataNotFound colSpan={8} />
           )}
         </TableBoxedLayoutTBody>
       </TableBoxedLayoutContainer>
