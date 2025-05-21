@@ -47,17 +47,33 @@ function ViewRecoveryDetails({data, hide}: IModalComponentProps) {
               <Status status={service.status} />
             </p>
 
-            <h6 className='font-semibold'>Service Expire Date:</h6>
-            <p className=''>{dayjs(service.expires_at).format("MMMM D, YYYY h:mm A")}</p>
+            {service.expires_at && (
+              <>
+                <h6 className='font-semibold'>Service Expire Date:</h6>
+                <p className=''>{dayjs(service.expires_at).format("MMMM D, YYYY h:mm A")}</p>
+              </>
+            )}
 
-            <h6 className='font-semibold'>Service Longitude:</h6>
-            <p className=''>{service.service_longitude}</p>
+            {service.service_longitude && (
+              <>
+                <h6 className='font-semibold'>Service Longitude:</h6>
+                <p className=''>{service.service_longitude}</p>
+              </>
+            )}
 
-            <h6 className='font-semibold'>Service Latitude:</h6>
-            <p className=''>{service.service_latitude}</p>
+            {service.service_latitude && (
+              <>
+                <h6 className='font-semibold'>Service Latitude:</h6>
+                <p className=''>{service.service_latitude}</p>
+              </>
+            )}
 
-            <h6 className='font-semibold'>Service Description:</h6>
-            <p className=''>{service.service_description}</p>
+            {service.service_description && (
+              <>
+                <h6 className='font-semibold'>Service Description:</h6>
+                <p className=''>{service.service_description}</p>
+              </>
+            )}
           </span>
         </div>
       </ModalBody>

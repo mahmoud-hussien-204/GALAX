@@ -1,6 +1,7 @@
 import {EnumGarageStatus} from "./enums";
 
 export interface IRecoveryListing {
+  id?: string;
   service_name: string;
   service_logo?: File | null;
   service_phone: string;

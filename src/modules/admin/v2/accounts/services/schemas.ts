@@ -1,14 +1,12 @@
-import {useForm} from "react-hook-form";
+import {EnumGarageStatus} from "../enums";
+import {IRecoveryListing} from "../interfaces";
 import * as yup from "yup";
-import {yupResolver} from "@hookform/resolvers/yup";
-import useMutation from "@/hooks/useMutation";
-import {IRecoveryListing} from "../../interfaces";
-import {EnumGarageStatus} from "../../enums";
-import {apiAddRecoveryListings} from "../../services/recoveryService";
 
-const fileSchema = yup.mixed<File>().test("fileType", "Only image files are allowed", (value) => {
-  return !value || (value instanceof File && value.type.startsWith("image/"));
-});
+export const fileSchema = yup
+  .mixed<File>()
+  .test("fileType", "Only image files are allowed", (value) => {
+    return !value || (value instanceof File && value.type.startsWith("image/"));
+  });
 
 export const recoveryListingSchema = yup.object<IRecoveryListing>().shape({
   service_name: yup.string().required("Service name is required"),
@@ -74,37 +72,3 @@ export const recoveryListingSchema = yup.object<IRecoveryListing>().shape({
     .oneOf(Object.values(EnumGarageStatus))
     .required("Status is required"),
 });
-
-function useAddRecoveryForm() {
-  const form = useForm<IRecoveryListing>({
-    defaultValues: {
-      service_logo: null,
-      service_description: "",
-      service_latitude: "",
-      service_longitude: "",
-    },
-    resolver: yupResolver(recoveryListingSchema),
-  });
-
-  const {mutate, isPending} = useMutation({
-    mutationFn: apiAddRecoveryListings,
-  });
-
-  const onSubmit = form.handleSubmit((values: IRecoveryListing) => {
-    const formData = new FormData();
-
-    Object.entries(values).forEach(([key, value]) => {
-      if (value) formData.append(key, value);
-    });
-
-    mutate(formData, {
-      onSuccess: () => {
-        form.reset();
-      },
-    });
-  });
-
-  return {onSubmit, form, isPending};
-}
-
-export default useAddRecoveryForm;

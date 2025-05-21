@@ -9,8 +9,18 @@ export const apiAddRecoveryListings = (data: FormData) => {
   return InterceptorHelper.intercept<IResponse<IRecoveryListing[]>>(`/towing-services`, {
     method: "POST",
     body: data,
-    headers: {
-      Accept: "application/json",
-    },
+  });
+};
+
+export const apiUpdateRecoveryListing = (id: IRecoveryListing["id"], data: FormData) => {
+  return InterceptorHelper.intercept<IResponse<IRecoveryListing[]>>(`/towing-services/${id}`, {
+    method: "POST",
+    body: data,
+  });
+};
+
+export const apiDeleteRecoveryListing = (id: string) => {
+  return InterceptorHelper.intercept(`/towing-services/${id}`, {
+    method: "DELETE",
   });
 };

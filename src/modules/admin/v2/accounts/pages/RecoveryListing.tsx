@@ -8,7 +8,8 @@ import Head from "../components/recovery/Head";
 import Modal from "@/components/Modal";
 import AddRecoveryForm from "../components/recovery/AddRecoveryForm";
 import ViewRecoveryDetails from "../components/recovery/ViewRecoveryDetails";
-import {EnumGarageStatus} from "../enums";
+import EditRecoveryForm from "../components/recovery/EditRecoveryForm";
+import DeleteRecoveryForm from "../components/recovery/DeleteRecoveryForm";
 
 export const Component = () => {
   usePageTitle("Recovery Listing");
@@ -22,44 +23,14 @@ export const Component = () => {
     <ModalProvider>
       <TransitionPage>
         <Head />
-        <RecoveryListingList
-          data={
-            data?.data
-              ? [
-                  {
-                    service_address: "test address",
-                    service_city: "test city",
-                    service_description: "test description",
-                    service_email: "test@email.com",
-                    service_logo: null,
-                    service_mobile: "01121945676",
-                    service_name: "test name",
-                    service_phone: "01121945676",
-                    service_whatsapp: "01121945676",
-                    expires_at: "2022-01-01T00:00:00.000Z",
-                    status: EnumGarageStatus.SHOW,
-                  },
-                  {
-                    service_address: "test address",
-                    service_city: "test city",
-                    service_description: "test description",
-                    service_email: "test@email.com",
-                    service_logo: null,
-                    service_mobile: "01121945676",
-                    service_name: "test name",
-                    service_phone: "01121945676",
-                    service_whatsapp: "01121945676",
-                    expires_at: "2022-01-01T00:00:00.000Z",
-                    status: EnumGarageStatus.SHOW,
-                  },
-                ]
-              : []
-          }
-          isLoading={isLoading}
-          totalPages={1}
-        />
+        <RecoveryListingList data={data?.data || []} isLoading={isLoading} totalPages={1} />
 
-        <Modal add={AddRecoveryForm} view={ViewRecoveryDetails} />
+        <Modal
+          add={AddRecoveryForm}
+          view={ViewRecoveryDetails}
+          edit={EditRecoveryForm}
+          delete={DeleteRecoveryForm}
+        />
       </TransitionPage>
     </ModalProvider>
   );
