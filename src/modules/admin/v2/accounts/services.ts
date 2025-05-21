@@ -22,7 +22,7 @@ export const apiEditGarage = (data: Partial<IEditGarageForm>) => {
   const formData = AppHelper.toFormData(rest);
 
   return InterceptorHelper.intercept(`/garages/${id}`, {
-    method: "PUT",
+    method: "POST",
     body: formData,
   });
 };

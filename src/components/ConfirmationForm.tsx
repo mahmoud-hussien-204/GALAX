@@ -33,7 +33,7 @@ const ConfirmationForm = ({
           </div>
         </div>
       </ModalBody>
-      <ModalFooter isLoading={isLoading} title={submitButtonTitle} />
+      <ModalFooter isLoading={isLoading} disabled={isLoading} title={submitButtonTitle} />
     </>
   );
 };

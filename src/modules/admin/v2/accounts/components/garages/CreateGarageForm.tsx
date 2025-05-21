@@ -16,7 +16,7 @@ const CreateGarageForm = () => {
       <form noValidate name='create-Garage-form' id='create-Garage-form' onSubmit={handleSubmit}>
         <ModalHeader title='Create New Garage' />
         <CreateAndEditGarageForm form={form} type='create' />
-        <ModalFooter isLoading={isPending} title='Create Garage' />
+        <ModalFooter isLoading={isPending} disabled={isPending} title='Create Garage' />
       </form>
     </FormProvider>
   );
