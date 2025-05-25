@@ -17,12 +17,20 @@ import RadioBoxInput from "@/components/RadioBoxInput";
 import {EnumGarageStatus} from "../../enums";
 
 import Textarea from "@/components/Textarea";
+import DateInput from "@/components/DateInput";
+import dayjs from "dayjs";
 
 interface IProps {
   form: UseFormReturn<IRecoveryListing>;
 }
 
 const AddAndEditRecoveryForm = ({form}: IProps) => {
+  const expiresAtField = form.watch("expires_at");
+
+  const expiresAtValue = expiresAtField ? dayjs(expiresAtField).toDate() : undefined;
+
+  const expiresAtMinValue = dayjs().add(1, "day").toDate();
+
   return (
     <ModalBody>
       <div className='mb-1.25rem grid gap-1.25rem sm:grid-cols-2'>
@@ -159,11 +167,19 @@ const AddAndEditRecoveryForm = ({form}: IProps) => {
         </div>
         <div className=''>
           <Label htmlFor='recovery-form-expire-date'>Expire Date</Label>
-          <Input
-            type='datetime-local'
-            {...form.register("expires_at")}
-            id='recovery-form-expire-date'
-            isError={!!form.formState.errors.expires_at}
+
+          <DateInput
+            name='expires_at'
+            onChange={(value) => {
+              if (!value) return;
+              form.setValue("expires_at", dayjs(value).format("YYYY-MM-DD"), {
+                shouldValidate: true,
+                shouldDirty: true,
+              });
+            }}
+            selected={expiresAtValue}
+            minDate={expiresAtMinValue}
+            placeholderText='Expires At'
           />
           <ErrorMessage>{form.formState.errors.expires_at?.message}</ErrorMessage>
         </div>
